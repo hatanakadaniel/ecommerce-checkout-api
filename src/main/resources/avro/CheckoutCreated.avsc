@@ -1,0 +1,11 @@
+{
+    "type": "record",
+    "name": "CheckoutCreatedEvent",
+    "namespace": "com.hatanaka.ecommerce.checkout.event",
+    "fields": [
+        {
+            "name": "checkoutCode",
+            "type": ["string", "null"]
+        }
+    ]
+}

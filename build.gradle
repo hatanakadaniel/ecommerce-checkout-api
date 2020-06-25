@@ -1,4 +1,5 @@
 plugins {
+    id 'com.commercehub.gradle.plugin.avro' version '0.17.0'
     id 'org.springframework.boot' version '2.3.1.RELEASE'
     id 'io.spring.dependency-management' version '1.0.9.RELEASE'
     id 'java'
@@ -16,6 +17,9 @@ configurations {
 
 repositories {
     mavenCentral()
+    maven {
+        url 'http://packages.confluent.io/maven/'
+    }
 }
 
 ext {
@@ -26,6 +30,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.cloud:spring-cloud-starter-sleuth'
     implementation 'org.springframework.cloud:spring-cloud-starter-stream-kafka'
+    implementation 'io.confluent:kafka-avro-serializer:5.5.0'
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
@@ -42,4 +47,12 @@ dependencyManagement {
 
 test {
     useJUnitPlatform()
+}
+
+avro {
+    fieldVisibility = "PRIVATE"
+}
+
+generateAvroJava {
+    source 'src/main/resources/avro'
 }

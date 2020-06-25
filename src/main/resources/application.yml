@@ -1,0 +1,31 @@
+spring:
+  cloud:
+    stream:
+      kafka:
+        binder:
+          autoCreateTopics: false
+          brokers: localhost:9092
+          configuration:
+            value:
+              deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
+              serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
+            key:
+              deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
+              serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
+      bindings:
+        checkout-created-output:
+          destination: streaming.ecommerce.checkout.created
+          contentType: application/*+avro
+          producer:
+            use-native-encoding: true
+        payment-paid-input:
+          destination: streaming.ecommerce.payment.paid
+          contentType: application/*+avro
+          group: ${spring.application.name}
+          consumer:
+            use-native-decoding: true
+  kafka:
+    properties:
+      schema:
+        registry:
+          url: http://localhost:8081
