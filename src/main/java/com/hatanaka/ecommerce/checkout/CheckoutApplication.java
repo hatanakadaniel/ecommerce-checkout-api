@@ -1,13 +1,13 @@
-package br.com.hatanaka.ecommerce;
+package com.hatanaka.ecommerce.checkout;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class EcommerceApplication {
+public class CheckoutApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(EcommerceApplication.class, args);
+        SpringApplication.run(CheckoutApplication.class, args);
     }
 
 }
