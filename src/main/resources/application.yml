@@ -1,4 +1,11 @@
 spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/checkout
+    username: checkout
+    password: checkout
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      connection-test-query: select 1
   cloud:
     stream:
       kafka:
