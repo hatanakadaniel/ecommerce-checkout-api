@@ -6,6 +6,19 @@ spring:
     driver-class-name: org.postgresql.Driver
     hikari:
       connection-test-query: select 1
+  jpa:
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        default_schema: checkout
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+        show_sql: true
+        use_sql_comments: true
+        jdbc:
+          lob:
+            non_contextual_creation: true
   cloud:
     stream:
       kafka:
