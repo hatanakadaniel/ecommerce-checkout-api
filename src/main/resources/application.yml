@@ -8,10 +8,9 @@ spring:
       connection-test-query: select 1
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: create-drop
     properties:
       hibernate:
-        default_schema: checkout
         dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: true
         show_sql: true
@@ -23,7 +22,7 @@ spring:
     stream:
       kafka:
         binder:
-          autoCreateTopics: false
+          autoCreateTopics: true
           brokers: localhost:9092
           configuration:
             value:
@@ -49,3 +48,5 @@ spring:
       schema:
         registry:
           url: http://localhost:8081
+  application:
+    name: checkout-api
