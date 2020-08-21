@@ -3,7 +3,7 @@ node {
         env.JAVA_HOME = tool 'java14'
         SCM_VARS = checkout scm
         env.GIT_BRANCH = SCM_VARS.GIT_BRANCH.replace(/origin\//, "")
-        echo SCM_VARS
+        print SCM_VARS
         sh 'ls -la'
         sh 'git status'
         sh 'git branch'
