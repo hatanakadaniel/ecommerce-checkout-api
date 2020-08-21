@@ -3,6 +3,7 @@ node {
         env.JAVA_HOME = tool 'java14'
         checkout scm
         sh 'ls -la'
-        sh './gradlew clean build -x test'
+        sh 'git status'
+//        sh './gradlew clean build -x test'
     }
 }
