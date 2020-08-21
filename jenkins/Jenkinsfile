@@ -1,6 +1,6 @@
 node {
     stage('Teste') {
-        checkout csm
+        checkout scm
         sh 'ls -la'
     }
 }
