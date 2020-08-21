@@ -4,7 +4,7 @@ node {
         SCM_VARS = checkout scm
         env.GIT_BRANCH = SCM_VARS.GIT_BRANCH.replace(/origin\//, "")
         print SCM_VARS
-        print ${params.BRANCH}
+        print params.BRANCH
         sh 'ls -la'
         sh 'git status'
         sh 'git branch'
