@@ -2,5 +2,6 @@ node {
     stage('Teste') {
         checkout scm
         sh 'ls -la'
+        sh './gradlew clean build -x test'
     }
 }
