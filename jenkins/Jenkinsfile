@@ -1,5 +1,6 @@
 node {
     stage('Teste') {
+        env.JAVA_HOME = tool 'java11'
         checkout scm
         sh 'ls -la'
         sh './gradlew clean build -x test'
