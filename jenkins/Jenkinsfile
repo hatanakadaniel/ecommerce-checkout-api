@@ -4,6 +4,7 @@ node {
         checkout scm
         sh 'ls -la'
         sh 'git status'
+        sh 'git branch'
 //        sh './gradlew clean build -x test'
     }
 }
