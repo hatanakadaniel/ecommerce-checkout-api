@@ -1,6 +1,12 @@
 version: '3.7'
 
 services:
+  jenkins:
+    build:
+      context: jenkins
+    ports:
+      - 8080:8080
+      - 50000:50000
   database-checkout:
     image: postgres:latest
     environment:
