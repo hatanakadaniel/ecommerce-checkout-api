@@ -1,5 +1,5 @@
 plugins {
-    id 'com.commercehub.gradle.plugin.avro' version '0.17.0'
+    id 'com.commercehub.gradle.plugin.avro' version '0.21.0'
     id 'org.springframework.boot' version '2.3.1.RELEASE'
     id 'io.spring.dependency-management' version '1.0.9.RELEASE'
     id 'java'
@@ -7,7 +7,7 @@ plugins {
 
 group = 'com.hatanaka.ecommerce'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '14'
+sourceCompatibility = JavaVersion.VERSION_14
 
 configurations {
     compileOnly {
@@ -24,6 +24,7 @@ repositories {
 
 ext {
     set('springCloudVersion', "Hoxton.SR6")
+    set('cucumberVersion', '6.6.0')
 }
 
 dependencies {
@@ -40,6 +41,11 @@ dependencies {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
     testImplementation 'org.springframework.cloud:spring-cloud-stream-test-support'
+    testImplementation "io.cucumber:cucumber-spring:${cucumberVersion}"
+    testImplementation "io.cucumber:cucumber-java:${cucumberVersion}"
+    testImplementation "io.cucumber:cucumber-junit:${cucumberVersion}"
+    testCompileOnly 'org.projectlombok:lombok'
+    testAnnotationProcessor 'org.projectlombok:lombok'
 }
 
 dependencyManagement {
@@ -57,5 +63,9 @@ avro {
 }
 
 generateAvroJava {
+    source 'src/main/resources/avro'
+}
+
+generateTestAvroJava {
     source 'src/main/resources/avro'
 }

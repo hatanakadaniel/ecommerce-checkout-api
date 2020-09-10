@@ -1,3 +1,4 @@
+
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/checkout
@@ -50,3 +51,5 @@ spring:
           url: http://localhost:8081
   application:
     name: checkout-api
+server:
+  port: 8085
