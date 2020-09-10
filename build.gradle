@@ -25,6 +25,8 @@ repositories {
 ext {
     set('springCloudVersion', "Hoxton.SR6")
     set('cucumberVersion', '6.6.0')
+    set('testContainersVersion', '1.14.3')
+    set('wireMockVersion', '2.27.2')
 }
 
 dependencies {
@@ -46,6 +48,11 @@ dependencies {
     testImplementation "io.cucumber:cucumber-junit:${cucumberVersion}"
     testCompileOnly 'org.projectlombok:lombok'
     testAnnotationProcessor 'org.projectlombok:lombok'
+    testImplementation "org.testcontainers:testcontainers:${testContainersVersion}"
+    testImplementation "org.testcontainers:kafka:${testContainersVersion}"
+    testImplementation "org.testcontainers:postgresql:${testContainersVersion}"
+    testImplementation "com.github.tomakehurst:wiremock:${wireMockVersion}"
+    testImplementation "org.springframework.cloud:spring-cloud-contract-wiremock"
 }
 
 dependencyManagement {
