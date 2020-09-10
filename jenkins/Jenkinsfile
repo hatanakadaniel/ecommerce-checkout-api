@@ -1,10 +1,14 @@
 node {
     stage('Teste') {
         env.JAVA_HOME = tool 'java14'
-        checkout scm
+        print env.JAVA_HOME
+        SCM_VARS = checkout scm
+        env.GIT_BRANCH = SCM_VARS.GIT_BRANCH.replace(/origin\//, "")
+        print SCM_VARS
+        print params.BRANCH
         sh 'ls -la'
         sh 'git status'
         sh 'git branch'
-        sh './gradlew clean build -x test'
+        sh './gradlew clean build test'
     }
 }
